@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- azure-java-code
 
 pool:
   vmImage: 'ubuntu-latest'
