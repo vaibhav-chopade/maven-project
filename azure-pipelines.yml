@@ -12,9 +12,23 @@ pool:
 
 steps:
 - task: Maven@3
+  displayName: Maven-Validate
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'validate'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- task
+- task: Maven@3
+  displayName: Maven-compile
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'compile'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
