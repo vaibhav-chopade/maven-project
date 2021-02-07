@@ -4,17 +4,15 @@
 # https://aka.ms/yaml
 
 trigger:
-- azure-java-code
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
 - task: Maven@3
-  displayName: Java-clean-package
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean package'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
