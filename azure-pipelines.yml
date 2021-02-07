@@ -11,9 +11,10 @@ pool:
 
 steps:
 - task: Maven@3
-  displayName: Maven-Build
+  displayName: Java-clean-package
   inputs:
     mavenPomFile: 'pom.xml'
+    goals: 'clean package'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
@@ -21,8 +22,3 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
