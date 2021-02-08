@@ -11,11 +11,17 @@ pool:
 
 steps:
 - task: SonarCloudPrepare@1
-  displayName:  Sonar-Prepare-anaylsis-config
   inputs:
     SonarCloud: 'sonar-to-azure-java-project'
-    organization: 'azure-vaibhav'
-    scannerMode: 'Other'
+    organization: 'azure-devops-to-sonar'
+    scannerMode: 'MSBuild'
+    projectKey: '43602ac548f3cd0a661be1c400983364d0c716ec'
+    projectName: 'vaibhav'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=vaibhav
 - task: Maven@3
   displayName: Maven-build
   inputs:
