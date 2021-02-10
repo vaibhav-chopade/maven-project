@@ -10,13 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonar-to-azure-java-project'
-    organization: 'azure-devops-to-sonar'
-    scannerMode: 'Other'
-- task: Maven@3
-  displayName: Maven-build
+- task: Maven@
+  displayName: Maven-Build
   inputs:
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
@@ -26,14 +21,9 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: SonarCloudAnalyze@1
-  displayName: Sonar-Run-Code-Analysis
-- task: SonarCloudPublish@1
-  displayName: Sonar-Publish-Code-Analysis
-  inputs:
-    pollingTimeoutSec: '100'
 - task: PublishBuildArtifacts@1
+  displayName: Publish-the-artifacts
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
