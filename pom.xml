@@ -262,9 +262,3 @@
   </prerequisites>
 
 </project>
-<properties>
-  <sonar.projectKey>Vaibhav-Demo_CI-CD-using-the-App-Services</sonar.projectKey>
-  <sonar.organization>vaibhav-demo</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-</properties>
-
