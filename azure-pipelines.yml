@@ -11,11 +11,16 @@ pool:
 
 steps:
 - task: SonarCloudPrepare@1
-  displayName: Prepare run analysis
   inputs:
-    SonarCloud: 'Sonar-to-CI pipeline'
+    SonarCloud: 'Sonar-to-CI pipeline-new'
     organization: 'vaibhav-demo'
     scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=Vaibhav-Demo_CI-CD-using-the-App-Services
+      sonar.projectName=CI-CD using the App Services
 - task: Maven@3
   displayName: Build with Maven
   inputs:
