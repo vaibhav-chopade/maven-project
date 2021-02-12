@@ -11,7 +11,7 @@ steps:
   inputs:
     SonarCloud: 'Sonar-to-CI pipeline-new'
     organization: 'vaibhav-demo'
-    scannerMode: 'Other'
+    scannerMode: 'CLI'
     extraProperties: |
       # Additional properties that will be passed to the scanner,
       # Put one key=value per line, example:
